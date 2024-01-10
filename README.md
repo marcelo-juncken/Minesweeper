@@ -2,6 +2,10 @@
 
 Este projeto foi desenvolvido utilizando REACT
 
+![image](https://github.com/marcelo-juncken/minesweeper/assets/24771425/a096d1cb-514e-49fd-ab5f-eb264adbe21f)
+
+
+
 ## Instalação
 
 No diretório do projeto execute o comando:
