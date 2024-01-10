@@ -1,0 +1,32 @@
+.difficulty-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.difficulty-container .radio-option {
+    display: inline-flex;
+    align-items: center;
+}
+
+.difficulty-container .radio-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+.difficulty-container .radio-option label[for="difficulty-easy"]{
+    color: green;
+}
+
+.difficulty-container .radio-option label[for="difficulty-medium"]{
+    color: yellow;
+}
+
+.difficulty-container .radio-option label[for="difficulty-hard"]{
+    color: red;
+}
+
+.difficulty-container .radio-option input,
+.difficulty-container .radio-option label{
+    cursor: pointer;
+}

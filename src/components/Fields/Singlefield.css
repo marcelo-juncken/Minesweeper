@@ -1,0 +1,46 @@
+.singlefield {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-style: dotted;
+    border-color: rgb(31, 31, 31);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a9adad;
+    box-shadow: 1px 1px 2px #000;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.singlefield.open, .singlefield.game-ended {
+    cursor: default;
+}
+
+/* .singlefield.hasBomb{
+    background-color: red;
+} */
+
+.singlefield.open{
+    background-color: #E5E5E5;
+    border-top: 1px solid #7b7b7b;
+    border-left: 1px solid #7b7b7b;
+    box-shadow: inset 1px 1px 2px #000;
+}
+
+.singlefield.exploded{
+    background-color: rgb(97, 77, 77,0.95);
+}
+
+.singlefield.open.mines-1 { color: blue};
+.singlefield.open.mines-2 { color: green};
+.singlefield.open.mines-3 { color: red};
+.singlefield.open.mines-4 { color: darkblue};
+.singlefield.open.mines-5 { color: brown};
+.singlefield.open.mines-6 { color: cyan};
+.singlefield.open.mines-7 { color: black};
+.singlefield.open.mines-8 { color: grey};

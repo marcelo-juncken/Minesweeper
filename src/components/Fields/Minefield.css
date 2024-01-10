@@ -1,0 +1,5 @@
+.mine-fields-container {
+    border: 2px solid #87888F;
+    display: grid;
+    height: 75%;
+}

@@ -1,0 +1,9 @@
+.display-container{
+    border: 1px solid #87888F;
+    height: 100%;
+    background-color: black;
+    color: red;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,13 @@
+.minesweeper{
+    border-radius: 5px;
+    border: 2px solid grey;
+    background-color: #C0C7C8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.gap-container{
+    height: 5px;
+}

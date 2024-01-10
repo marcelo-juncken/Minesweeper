@@ -1,0 +1,9 @@
+.header-container{
+    display: flex;
+    border: 2px solid #87888F;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: 3em;
+    padding: 8px;
+}
