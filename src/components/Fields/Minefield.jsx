@@ -34,7 +34,22 @@ const Minefield = ({ minefieldProperties, gameState }) => {
       }))
     );
 
-  const [fields, setFields] = useState(initializeMinefield());
+  const [fields, setFields] = useState([]);
+
+  useEffect(() => {
+    remakeMinefield();
+  }, [gameStatus, minefieldProperties]);
+
+  useEffect(() => {
+    updateMarkedFields();
+    checkGameResult();
+  }, [fields]);
+
+  const remakeMinefield = () => {
+    if (gameStatus === GameStatus.NOT_STARTED) {
+      distributeMines();
+    }
+  };
 
   const distributeMines = () => {
     let remainedMinesToDistribute = minefieldProperties.totalMines;
@@ -57,22 +72,6 @@ const Minefield = ({ minefieldProperties, gameState }) => {
     }
 
     setFields(newFields);
-  };
-
-  useEffect(() => {
-    remakeMinefield();
-  }, [gameStatus, minefieldProperties]);
-
-  useEffect(() => {
-    updateMarkedFields();
-    checkGameResult();
-  }, [fields]);
-
-  const remakeMinefield = () => {
-    if (gameStatus === GameStatus.NOT_STARTED) {
-      setFields(initializeMinefield());
-      distributeMines();
-    }
   };
 
   const updateMarkedFields = () => {
@@ -125,14 +124,15 @@ const Minefield = ({ minefieldProperties, gameState }) => {
   };
 
   const revealAllBombs = () => {
-    const revealFields = fields.map((row) =>
-      row.map((cell) => ({
-        ...cell,
-        isOpen: cell.hasBomb ? true : cell.isOpen,
-      }))
-    );
-
-    setFields(revealFields);
+    setFields((prevFields) => {
+      const revealedFields = prevFields.map((row) =>
+        row.map((cell) => ({
+          ...cell,
+          isOpen: cell.hasBomb ? true : cell.isOpen,
+        }))
+      );
+      return revealedFields;
+    });
   };
 
   const incrementCountingMinesAround = (rowIndex, columnIndex, newFields) => {
@@ -174,15 +174,23 @@ const Minefield = ({ minefieldProperties, gameState }) => {
   };
 
   const openMinedField = (rowIndex, columnIndex) => {
-    const newFields = fields.map((row) => row.map((cell) => ({ ...cell })));
-    newFields[rowIndex][columnIndex].hasExploded = true;
-    setFields(newFields);
+    setFields((prevFields) => {
+      const newFields = prevFields.map((row) =>
+        row.map((cell) => ({ ...cell }))
+      );
+      newFields[rowIndex][columnIndex].hasExploded = true;
+      return newFields;
+    });
   };
 
   const openSafeField = (rowIndex, columnIndex) => {
-    const newFields = fields.map((row) => row.map((cell) => ({ ...cell })));
-    openFieldAndNeighbours(rowIndex, columnIndex, newFields);
-    setFields(newFields);
+    setFields((prevFields) => {
+      const newFields = prevFields.map((row) =>
+        row.map((cell) => ({ ...cell }))
+      );
+      openFieldAndNeighbours(rowIndex, columnIndex, newFields);
+      return newFields;
+    });
   };
 
   const openFieldAndNeighbours = (rowIndex, columnIndex, newFields) => {
@@ -209,13 +217,19 @@ const Minefield = ({ minefieldProperties, gameState }) => {
       setGameStatus(GameStatus.IN_PROGRESS);
     }
 
-    const newFields = fields.map((row) => row.map((cell) => ({ ...cell })));
-    const field = newFields[rowIndex][columnIndex];
+    setFields((prevFields) => {
+      const newFields = prevFields.map((row) =>
+        row.map((cell) => ({ ...cell }))
+      );
+      const field = newFields[rowIndex][columnIndex];
 
-    if (!field.isOpen) {
-      field.isMarked = !field.isMarked;
-      setFields(newFields);
-    }
+      if (!field.isOpen) {
+        field.isMarked = !field.isMarked;
+        return newFields;
+      }
+
+      return prevFields;
+    });
   };
 
   return (
