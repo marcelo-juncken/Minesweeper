@@ -21,6 +21,10 @@
     cursor: default;
 }
 
+/* .singlefield.hasBomb{
+    background-color: red;
+} */
+
 .singlefield.open{
     background-color: #E5E5E5;
     border-top: 1px solid #7b7b7b;
