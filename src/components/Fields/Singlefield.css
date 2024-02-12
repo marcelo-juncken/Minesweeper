@@ -36,11 +36,11 @@
     background-color: rgb(97, 77, 77,0.95);
 }
 
-.singlefield.open.mines-1 { color: blue};
-.singlefield.open.mines-2 { color: green};
-.singlefield.open.mines-3 { color: red};
-.singlefield.open.mines-4 { color: darkblue};
-.singlefield.open.mines-5 { color: brown};
-.singlefield.open.mines-6 { color: cyan};
-.singlefield.open.mines-7 { color: black};
-.singlefield.open.mines-8 { color: grey};
+.singlefield.open.mines-1 { color: blue}
+.singlefield.open.mines-2 { color: green}
+.singlefield.open.mines-3 { color: red}
+.singlefield.open.mines-4 { color: darkblue}
+.singlefield.open.mines-5 { color: brown}
+.singlefield.open.mines-6 { color: cyan}
+.singlefield.open.mines-7 { color: black}
+.singlefield.open.mines-8 { color: grey}
